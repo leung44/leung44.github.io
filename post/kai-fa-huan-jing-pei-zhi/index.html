@@ -1,0 +1,389 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>开发环境配置 | 泥瓶巷</title>
+<meta name="description" content="Hello world" />
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569505438944">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://leung44.github.io/">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569505438944" alt="">
+  </a>
+  <h1 class="site-title">
+    泥瓶巷
+  </h1>
+  <p class="site-description">
+    Hello world
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              开发环境配置
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-09-26
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://leung44.github.io//tag/FSdw0XLgQ" class="post-tag">
+                  # Liunx
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://leung44.github.io//post-images/kai-fa-huan-jing-pei-zhi.gif" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="linux">Linux</h2>
+<h2 id="查看linux版本centos">查看Linux版本(CentOS)</h2>
+<pre><code class="language-bash">cat /etc/redhat-release
+uname -r
+</code></pre>
+<h2 id="查询系统位数">查询系统位数</h2>
+<pre><code class="language-shell">getconf LONG_BIT
+</code></pre>
+<h2 id="springboot">SPRINGBOOT</h2>
+<pre><code class="language-bash">nohup java -jar love100.jar --spring.profiles.active=test &amp;&gt; /dev/null 2&gt;&amp;1 &amp;
+</code></pre>
+<h2 id="基本工具">基本工具</h2>
+<pre><code class="language-shell"># lsof 进程管理工具
+yum install lsof
+</code></pre>
+<h2 id="maven">MAVEN</h2>
+<pre><code class="language-shell">cd /usr/local/src
+wget http://mirrors.shu.edu.cn/apache/maven/maven-3/3.x.x/binaries/apache-maven-3.x.x-bin.tar.gz
+tar xzf apache-maven-3.x.x-bin.tar.gz
+# 配置环境变量
+export MAVEN_HOME=/usr/local/src/apache-maven-3.x.x
+PATH=$PATH:$MAVEN_HOME/bin
+</code></pre>
+<h2 id="nodejs">NODEJS</h2>
+<pre><code class="language-shell">curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+yum install -y nodejs
+# 淘宝镜像
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+# 安装升级模块
+npm install -g n
+# 升级node.js到稳定版本
+n stable
+#指定升级版本
+n 10.16.0
+#升级NPM
+npm install npm -g
+
+# 安装 yarn
+npm install -g yarn
+# 安装淘宝镜像
+yarn config set registry https://registry.npm.taobao.org
+
+# 卸载
+# 包管理卸载
+yum remove nodejs npm -y 
+# 查找安装文件
+find / -name node
+# 删除
+rm -rf
+</code></pre>
+<h2 id="授权shell脚本">授权shell脚本</h2>
+<pre><code class="language-shell">chmod +x *.sh
+</code></pre>
+<h2 id="nginx">NGINX</h2>
+<pre><code class="language-shell"># 下载nginx压缩包
+wget http://nginx.org/download/nginx-1.15.4.tar.gz 
+# 解压
+tar -zxvf nginx-1.15.4.tar.gz 
+cd nginx-1.15.4/
+# 编译安装
+make &amp;&amp; make install 
+# 启动 
+nginx 
+# 检测配置
+nginx -t
+# 重启
+nginx -s reload
+# 停止服务
+nginx -s quit
+# 杀进程
+ps -ef | grep nginx
+kill -QUIT $pid / kill -TERM $pid
+# 强行杀进程
+pkill -9 nginx
+
+
+# 配置多域名
+        # 生产域名 
+    server {
+        listen 80;
+        server_name love100.qxiao.net;
+        location / {
+            proxy_pass  http://127.0.0.1:8080;
+        }
+        }
+        
+    # 测试域名 
+    server {
+        listen 80;
+        server_name love100cs.qxiao.net;
+        location / {
+            proxy_pass  http://127.0.0.1:8081;
+        }
+        }
+</code></pre>
+<h2 id="redis">REDIS</h2>
+<pre><code class="language-shell"># 切换到安装目录准备下载安装包
+cd /usr/local/src 
+# 获取redis资源
+wget http://download.redis.io/releases/redis-4.0.8.tar.gz
+# 解压
+tar xzvf redis-r.0.8.tar.gz
+# 安装
+cd redis-4.0.8
+make
+cd src
+make install PREFIX=/usr/local/redis
+# 移动配置文件到安装目录
+mkdir /usr/local/redis/etc
+cd ..
+mv redis.conf /usr/local/redis/etc
+# 修改配置 
+vi /usr/local/redis/etc/redis.conf
+# 后台运行
+daemonize yes
+# 日志文件
+logfile:&quot;/root/logs/redis.log&quot;
+# 远程连接
+bind 0.0.0.0
+# cp 执行命令到 bin
+cp redis-benchmark /usr/bin/
+cp redis-check-aof /usr/bin/
+cp redis-check-rdb /usr/bin/
+cp redis-cli /usr/bin/
+cp redis-sentinel /usr/bin/
+cp redis-server /usr/bin/
+# 将redis加入到开机启动
+vi /etc/rc.local
+# 启动redis并指定配置文件
+/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf
+# 停止redis
+pkill redis
+</code></pre>
+<h2 id="rabbitmq">RabbitMQ</h2>
+<pre><code class="language-shell"># 安装必须插件
+yum -y install make gcc gcc-c++ kernel-devel m4 ncurses-devel openssl-devel unixODBC-devel
+
+# 安装 erlang
+yum install erlang
+
+# 进入 erlang
+erl
+# 推出 erlang
+q().
+
+# 安装 RabbitMQ
+wget https://www.rabbitmq.com/releases/rabbitmq-server/v3.6.8/rabbitmq-server-3.6.8-1.el7.noarch.rpm
+
+rpm --import https://www.rabbitmq.com/rabbitmq-release-signing-key.asc
+
+yum install rabbitmq-server-3.6.8-1.el7.noarch.rpm
+
+rpm -i --nodeps rabbitmq-server-3.6.8-1.el7.noarch.rpm
+
+# 启动 RabbitMQ
+/sbin/service rabbitmq-server start
+
+# 创建 admin
+rabbitmqctl add_user admin 123456
+
+# 授权
+rabbitmqctl  set_permissions -p &quot;/&quot; admin '.*' '.*' '.*'
+
+# 赋予administrator角色
+rabbitmqctl set_user_tags admin administrator
+
+# 开启控制台
+rabbitmq-plugins enable rabbitmq_management
+
+# 访问
+${IP}:15672
+
+# 查看用户列表
+rabbitmqctl list_users
+
+# 修改密码
+rabbitmqctl change_password ${username} '${new_password}'
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8Blinux%E7%89%88%E6%9C%ACcentos">查看Linux版本(CentOS)</a></li>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E4%BD%8D%E6%95%B0">查询系统位数</a></li>
+<li><a href="#springboot">SPRINGBOOT</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7">基本工具</a></li>
+<li><a href="#maven">MAVEN</a></li>
+<li><a href="#nodejs">NODEJS</a></li>
+<li><a href="#%E6%8E%88%E6%9D%83shell%E8%84%9A%E6%9C%AC">授权shell脚本</a></li>
+<li><a href="#nginx">NGINX</a></li>
+<li><a href="#redis">REDIS</a></li>
+<li><a href="#rabbitmq">RabbitMQ</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://leung44.github.io//post/hello-gridea">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '19cfff94559c2c61035b',
+    clientSecret: '50f29ce42c107027e1184adfa7833261872c9a74',
+    repo: 'leung44.github.io',
+    owner: 'leung44',
+    admin: ['leung44'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://leung44.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
