@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://leung44.github.io/</id>
     <title>泥瓶巷</title>
-    <updated>2019-09-26T13:56:15.404Z</updated>
+    <updated>2019-09-26T15:57:20.615Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://leung44.github.io/"/>
     <link rel="self" href="https://leung44.github.io//atom.xml"/>
@@ -11,23 +11,17 @@
     <icon>https://leung44.github.io//favicon.ico</icon>
     <rights>All rights reserved 2019, 泥瓶巷</rights>
     <entry>
+        <title type="html"><![CDATA[Linux基本命令]]></title>
+        <id>https://leung44.github.io//post/linux-ji-ben-ming-ling</id>
+        <link href="https://leung44.github.io//post/linux-ji-ben-ming-ling">
+        </link>
+        <updated>2019-09-26T14:13:54.000Z</updated>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[开发环境配置]]></title>
         <id>https://leung44.github.io//post/kai-fa-huan-jing-pei-zhi</id>
         <link href="https://leung44.github.io//post/kai-fa-huan-jing-pei-zhi">
         </link>
         <updated>2019-09-26T13:22:28.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://leung44.github.io//post/hello-gridea</id>
-        <link href="https://leung44.github.io//post/hello-gridea">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></content>
     </entry>
 </feed>
