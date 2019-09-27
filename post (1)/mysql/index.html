@@ -2,9 +2,9 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MYSQL备份 | 泥瓶巷</title>
+<title>MYSQL安装 | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
-<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569548562927">
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569514356911">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://leung44.github.io/">
-  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569548562927" alt="">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569514356911" alt="">
   </a>
   <h1 class="site-title">
     泥瓶巷
@@ -73,7 +73,7 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              MYSQL备份
+              MYSQL安装
             </h2>
             <div class="post-info">
               <span>
@@ -83,98 +83,67 @@
                 2 min read
               </span>
               
-                <a href="https://leung44.github.io//tag/Zcs33y6xL" class="post-tag">
-                  # Mysql
-                </a>
-              
             </div>
-            
-              <img class="post-feature-image" src="https://leung44.github.io//post-images/mysql-bei-fen.gif" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="全量备份">全量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak
-MYSQL_HOME=/usr/local/mysql
-USERNAME=&quot;root&quot;
-PASSWORD=&quot;xiaojiao123&quot;
-DB_NAME=&quot;aixin100&quot;
-# 定义备份文件名
-FILE_NAME=&quot;${DB_NAME}_${DATE_NOW}.sql&quot;
-# 定义备份文件目录
-BACKUP_FILE_NAME=&quot;${BACKUP_DIR}/${FILE_NAME}&quot;
-echo &quot;starting backup mysql ${DB_NAME} at ${NOW}.&quot;
-# 进入 Mysql bin 目录
-cd ${MYSQL_HOME}/bin
-mysqldump -u${USERNAME} -p${PASSWORD}  --lock-all-tables --flush-logs ${DB_NAME} &gt; ${BACKUP_FILE_NAME}
-# 进入到备份文件目录
-cd ${BACKUP_DIR}
-# 压缩备份文件
-tar zcvf ${FILE_NAME}.tar.gz ${FILE_NAME}
-# 删除所有增量备份
-cd $BACKUP_DIR/daily
-rm -f *
-# use nodejs to upload backup file other place
-#NODE_ENV=$backUpFolder@$backUpFileName node /home/tasks/upload.js
-DATE_END=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-echo &quot;finish backup mysql database ${DB_NAME} at ${DATE_END}.&quot;
+                <ol>
+<li>进入<a href="%5Bhttps://dev.mysql.com/downloads/mysql/%5D(https://dev.mysql.com/downloads/mysql/)">官网</a></li>
+<li>DOWNLOADS - Community - MySQL Community Server</li>
+<li>选择版本/位数</li>
+<li>下载压缩包</li>
+<li>解压</li>
+<li>配置环境变量</li>
+</ol>
+<pre><code class="language-bash">path:%MYSQL%\bin
 </code></pre>
-<h2 id="增量备份">增量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak/daily
-# 日志文件
-LOG_FILE=/home/db_bak/bak.log
-# mysql目录
-MYSQL_HOME=/usr/local/mysql
-# mysql的index文件路径，放在数据目录下的
-BIN_FILE=${MYSQL_HOME}/data/mysql-bin.index
-# 这个是用于产生新的mysql-bin.00000*文件
-cd ${MYSQL_HOME}/bin
-mysqladmin -uroot -pxiaojiao123 flush-logs
-
-COUNTER=`wc -l $BIN_FILE| awk '{print $1}'`
-NEXT_NUM=0
-# 这个for循环用于比对$Counter,$NextNum这两个值来确定文件是不是存在或最新的
-for FILE in `cat $BIN_FILE`
-do
-    BASE=`basename $FILE`
-    echo $BASE
-    NEXT_NUM=`expr $NEXT_NUM + 1`
-    if [ '$NEXT_NUM' == '$COUNTER' ]
-    then
-        echo $BASE skip! &gt;&gt; $LOG_FILE
-    else
-        DEST=$BACKUP_DIR/$BASE
-        #test -e用于检测目标文件是否存在，存在就写exist!到$LogFile去
-        if(test -e $DEST)
-        then
-            echo $BASE exist! &gt;&gt; $LOG_FILE
-        else
-            cp $MYSQL_HOME/data/$BASE $BACKUP_DIR
-            echo $BASE copying &gt;&gt; $LOG_FILE
-        fi
-        fi
-done
-
-echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
+<ol start="7">
+<li>创建或修改%MYSQL%目录配置文件my.ini
+<ol>
+<li>basedir=%MYSQL%</li>
+<li>datadir=%MYSQL%</li>
+<li>port=3306</li>
+</ol>
+</li>
+<li>cmd(管理员 cd /)</li>
+</ol>
+<pre><code class="language-mysql">cd %MYSQL%\bin
+mysqld --initalize-insecure(初始密码为空)
+mysqld -install
+net start mysql
+mysql -u root -p
 </code></pre>
+<ol>
+<li>卸载</li>
+</ol>
+<pre><code class="language-mysql">net stop mysql
+mysqld --remove mysql
+</code></pre>
+<ol start="10">
+<li>更新root密码</li>
+</ol>
+<pre><code class="language-mysql">set password for root@localhost = password('root');
+</code></pre>
+<ol start="11">
+<li>忘记root密码
+<ol>
+<li>关闭正在运行的MySQL服务。</li>
+<li>打开DOS窗口，转到mysql。</li>
+<li>输入mysqld –skip-grant-tables 回车。–skip-grant-tables 的意思是启动MySQL服务的时候跳过权限表认证。</li>
+<li>再开一个DOS窗口（因为刚才那个DOS窗口已经不能动了），转到mysql。</li>
+<li>输入mysql回车，如果成功，将出现MySQL提示符 &gt;。</li>
+<li>连接权限数据库： use mysql; 。</li>
+<li>改密码：update user set password=password(“root”) where user=“root”;（别忘了最后加分号） 。</li>
+<li>刷新权限（必须步骤）：flush privileges;　。</li>
+<li>退出 quit。</li>
+<li>注销系统，再进入，重新登录</li>
+</ol>
+</li>
+</ol>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD">全量备份</a></li>
-<li><a href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD">增量备份</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
@@ -183,9 +152,9 @@ echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://leung44.github.io//post/mysql">
+            <a href="https://leung44.github.io//post/linux-ji-ben-ming-ling">
               <h3 class="post-title">
-                MYSQL安装
+                Linux基本命令
               </h3>
             </a>
           </div>

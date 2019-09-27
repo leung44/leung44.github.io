@@ -2,9 +2,9 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MYSQL备份 | 泥瓶巷</title>
+<title>YDL_KEY | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
-<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569548562927">
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569514356911">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://leung44.github.io/">
-  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569548562927" alt="">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569514356911" alt="">
   </a>
   <h1 class="site-title">
     泥瓶巷
@@ -73,122 +73,113 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              MYSQL备份
+              YDL_KEY
             </h2>
             <div class="post-info">
               <span>
-                2019-09-27
+                2019-09-26
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://leung44.github.io//tag/Zcs33y6xL" class="post-tag">
-                  # Mysql
+                <a href="https://leung44.github.io//tag/kKsUtZFYb" class="post-tag">
+                  # Windows
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://leung44.github.io//post-images/mysql-bei-fen.gif" alt="">
-            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="全量备份">全量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak
-MYSQL_HOME=/usr/local/mysql
-USERNAME=&quot;root&quot;
-PASSWORD=&quot;xiaojiao123&quot;
-DB_NAME=&quot;aixin100&quot;
-# 定义备份文件名
-FILE_NAME=&quot;${DB_NAME}_${DATE_NOW}.sql&quot;
-# 定义备份文件目录
-BACKUP_FILE_NAME=&quot;${BACKUP_DIR}/${FILE_NAME}&quot;
-echo &quot;starting backup mysql ${DB_NAME} at ${NOW}.&quot;
-# 进入 Mysql bin 目录
-cd ${MYSQL_HOME}/bin
-mysqldump -u${USERNAME} -p${PASSWORD}  --lock-all-tables --flush-logs ${DB_NAME} &gt; ${BACKUP_FILE_NAME}
-# 进入到备份文件目录
-cd ${BACKUP_DIR}
-# 压缩备份文件
-tar zcvf ${FILE_NAME}.tar.gz ${FILE_NAME}
-# 删除所有增量备份
-cd $BACKUP_DIR/daily
-rm -f *
-# use nodejs to upload backup file other place
-#NODE_ENV=$backUpFolder@$backUpFileName node /home/tasks/upload.js
-DATE_END=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-echo &quot;finish backup mysql database ${DB_NAME} at ${DATE_END}.&quot;
-</code></pre>
-<h2 id="增量备份">增量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak/daily
-# 日志文件
-LOG_FILE=/home/db_bak/bak.log
-# mysql目录
-MYSQL_HOME=/usr/local/mysql
-# mysql的index文件路径，放在数据目录下的
-BIN_FILE=${MYSQL_HOME}/data/mysql-bin.index
-# 这个是用于产生新的mysql-bin.00000*文件
-cd ${MYSQL_HOME}/bin
-mysqladmin -uroot -pxiaojiao123 flush-logs
+                <pre><code class="language-yaml"># 【乐爱心】
 
-COUNTER=`wc -l $BIN_FILE| awk '{print $1}'`
-NEXT_NUM=0
-# 这个for循环用于比对$Counter,$NextNum这两个值来确定文件是不是存在或最新的
-for FILE in `cat $BIN_FILE`
-do
-    BASE=`basename $FILE`
-    echo $BASE
-    NEXT_NUM=`expr $NEXT_NUM + 1`
-    if [ '$NEXT_NUM' == '$COUNTER' ]
-    then
-        echo $BASE skip! &gt;&gt; $LOG_FILE
-    else
-        DEST=$BACKUP_DIR/$BASE
-        #test -e用于检测目标文件是否存在，存在就写exist!到$LogFile去
-        if(test -e $DEST)
-        then
-            echo $BASE exist! &gt;&gt; $LOG_FILE
-        else
-            cp $MYSQL_HOME/data/$BASE $BACKUP_DIR
-            echo $BASE copying &gt;&gt; $LOG_FILE
-        fi
-        fi
-done
+user: 1610660369@qq.com
+password: lehui2019**
 
-echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
+APPID: wx760cef3a19962d7a
+secret: 72a19c31e89949195d9af5c84607e241
+Token: love100
+AESKey: 8tdkp3qRKx4lF8U3FT9rD0vd8TJLYCkAy5ohyVnfbjN
+
+
+# 【支付: 广州乐惠网络科技有限公司】
+mchId: 1538027571
+mchKey: WUxDkx2XnLKL2SK5gbp0lr6ud4ffqncr
+操作密码: apilax20**
+
+
+# 【萌爱心】
+user: 1926646409@qq.com
+password: gzqy2018
+
+appid: wx00a906b780828297
+sercet: c8fc3c64b2657198bbb8e1e8703d72b0
+Token: love100
+AESKey: 8tdkp3qRKx4lF8U3FT9rD0vd8TJLYCkAy5ohyVnfbjN
+
+# 【支付 武汉蕲远信息科技有限公司】
+mckId: 1540638001
+mchKey: d9fa57bbddf6fc46da50b0b52bb247b0
+操作密码: 201989
+
+# 【爱心壹佰】
+username: 3150509305@qq.com
+password: aixin100()
+
+appid: wx47671daaef00f89c
+sercet: bd9f60f21313ac87fd9bf70a5d37f91d
+Token: love100
+AESKey: p4p3ZSZ8bGVZkLVrZNrcNpxVoYruBxmpQqbuYw7Pnwp
+
+# 【支付: 华侨基金会】
+mchId: 1500474782
+mchKey: qiaoxingongyipingtai201803272100
+
+
+# 模板消息
+审核结果通知: OPENTM400617306
+缴费提醒: OPENTM409571580
+公益项目进展通知: OPENTM204562346
+
+# 【阿里云服务器】
+IP: 59.110.142.174
+user: root
+password: Yidailu()17**
+
+# 数据库
+user: root
+password: xiaojiao123
+# redis
+password: bG92ZTEwMF9yZWRpcw==
+
+# 本地 Liunx
+IP: 192.168.18.253
+user: root
+password: M6RScMZ6sLEw
+
+# 本地数据库
+user: xiaojiao
+password: xiaojiao123
+# druid 加密
+privateKey: MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAhL3dz/p+3zjvQrEg1Qpj/eZ/7Ea218jBs/SXzqfX0rzInmigzG2CiHRjgwxm5ma35Yg41KYJppHUsyvBEwPcuwIDAQABAkAycI9Dw1TIb7MC7ZmjOmKKjTbYynoZ/tAUGIJC5aZuDfiiZo+G3q/UGOxs0TO3bkNVNYTZ2yFGhegkqBs33XE5AiEA/9Gw4BX9NNifMw7jpsLIqgas862Nx7ckSzDo9Nh//IcCIQCE1eVNv44D85HJ+eoj+y0xmTt9PwbKaiMStWveALb/LQIhAMoLoqgJlfeUE4CvBMwj0XrAVP8MlwsisY6VbZhcGhGnAiAqq/++iyOW917FEGh76ItrHHt0z5Nh4NilgOxG49nlfQIgOHHVw1V2PbywPxKIOwt5iUNhmT97gpWWnzmbuxSFmzA=
+publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIS93c/6ft8470KxINUKY/3mf+xGttfIwbP0l86n19K8yJ5ooMxtgoh0Y4MMZuZmt+WIONSmCaaR1LMrwRMD3LsCAwEAAQ==
+password: NaFvaH6jhinlADR4S2E38bE5iKcJWI4pcQ8birhdxwEhoXDghFg/GzUgWv0ND6uR+aIvm+fsz65C6dgCC2/iPg==
+
+# 四合一认证
+link: https://market.aliyun.com/products/57000002/cmapi028251.html
+AppKey: 203723498     
+AppSecret: 8udyoeh0j7llkyoesk0e7xyic1n4rmh9
+AppCode: 8467d60fe63d4c4e952755ef5fe79453
 </code></pre>
 
               </div>
               <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD">全量备份</a></li>
-<li><a href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD">增量备份</a></li>
-</ul>
-</li>
-</ul>
-
+                
               </div>
             </div>
           </article>
         </div>
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://leung44.github.io//post/mysql">
-              <h3 class="post-title">
-                MYSQL安装
-              </h3>
-            </a>
-          </div>
         
 
         

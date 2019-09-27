@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MYSQL备份 | 泥瓶巷</title>
+<title>JAVA基基基基基基基基础 | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
 <link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569548562927">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -73,104 +73,42 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              MYSQL备份
+              JAVA基基基基基基基基础
             </h2>
             <div class="post-info">
               <span>
                 2019-09-27
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
-                <a href="https://leung44.github.io//tag/Zcs33y6xL" class="post-tag">
-                  # Mysql
+                <a href="https://leung44.github.io//tag/ka78DRSA_" class="post-tag">
+                  # Java
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://leung44.github.io//post-images/mysql-bei-fen.gif" alt="">
+              <img class="post-feature-image" src="https://leung44.github.io//post-images/java-ji-ji-ji-ji-ji-ji-ji-ji-chu.gif" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="全量备份">全量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak
-MYSQL_HOME=/usr/local/mysql
-USERNAME=&quot;root&quot;
-PASSWORD=&quot;xiaojiao123&quot;
-DB_NAME=&quot;aixin100&quot;
-# 定义备份文件名
-FILE_NAME=&quot;${DB_NAME}_${DATE_NOW}.sql&quot;
-# 定义备份文件目录
-BACKUP_FILE_NAME=&quot;${BACKUP_DIR}/${FILE_NAME}&quot;
-echo &quot;starting backup mysql ${DB_NAME} at ${NOW}.&quot;
-# 进入 Mysql bin 目录
-cd ${MYSQL_HOME}/bin
-mysqldump -u${USERNAME} -p${PASSWORD}  --lock-all-tables --flush-logs ${DB_NAME} &gt; ${BACKUP_FILE_NAME}
-# 进入到备份文件目录
-cd ${BACKUP_DIR}
-# 压缩备份文件
-tar zcvf ${FILE_NAME}.tar.gz ${FILE_NAME}
-# 删除所有增量备份
-cd $BACKUP_DIR/daily
-rm -f *
-# use nodejs to upload backup file other place
-#NODE_ENV=$backUpFolder@$backUpFileName node /home/tasks/upload.js
-DATE_END=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-echo &quot;finish backup mysql database ${DB_NAME} at ${DATE_END}.&quot;
-</code></pre>
-<h2 id="增量备份">增量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak/daily
-# 日志文件
-LOG_FILE=/home/db_bak/bak.log
-# mysql目录
-MYSQL_HOME=/usr/local/mysql
-# mysql的index文件路径，放在数据目录下的
-BIN_FILE=${MYSQL_HOME}/data/mysql-bin.index
-# 这个是用于产生新的mysql-bin.00000*文件
-cd ${MYSQL_HOME}/bin
-mysqladmin -uroot -pxiaojiao123 flush-logs
-
-COUNTER=`wc -l $BIN_FILE| awk '{print $1}'`
-NEXT_NUM=0
-# 这个for循环用于比对$Counter,$NextNum这两个值来确定文件是不是存在或最新的
-for FILE in `cat $BIN_FILE`
-do
-    BASE=`basename $FILE`
-    echo $BASE
-    NEXT_NUM=`expr $NEXT_NUM + 1`
-    if [ '$NEXT_NUM' == '$COUNTER' ]
-    then
-        echo $BASE skip! &gt;&gt; $LOG_FILE
-    else
-        DEST=$BACKUP_DIR/$BASE
-        #test -e用于检测目标文件是否存在，存在就写exist!到$LogFile去
-        if(test -e $DEST)
-        then
-            echo $BASE exist! &gt;&gt; $LOG_FILE
-        else
-            cp $MYSQL_HOME/data/$BASE $BACKUP_DIR
-            echo $BASE copying &gt;&gt; $LOG_FILE
-        fi
-        fi
-done
-
-echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
-</code></pre>
+                <h2 id="java特性">JAVA特性</h2>
+<p>封装, 继承, 多态, 低耦合, 跨平台</p>
+<ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+<li>低耦合</li>
+<li>跨平台</li>
+</ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD">全量备份</a></li>
-<li><a href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD">增量备份</a></li>
+<li><a href="#java%E7%89%B9%E6%80%A7">JAVA特性</a></li>
 </ul>
 </li>
 </ul>
@@ -183,9 +121,9 @@ echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://leung44.github.io//post/mysql">
+            <a href="https://leung44.github.io//post/mysql-bei-fen">
               <h3 class="post-title">
-                MYSQL安装
+                MYSQL备份
               </h3>
             </a>
           </div>

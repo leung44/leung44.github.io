@@ -2,9 +2,9 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MYSQL备份 | 泥瓶巷</title>
+<title>Linux基本命令 | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
-<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569548562927">
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569514356911">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://leung44.github.io/">
-  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569548562927" alt="">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569514356911" alt="">
   </a>
   <h1 class="site-title">
     泥瓶巷
@@ -73,95 +73,181 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              MYSQL备份
+              Linux基本命令
             </h2>
             <div class="post-info">
               <span>
-                2019-09-27
+                2019-09-26
               </span>
               <span>
                 2 min read
               </span>
               
-                <a href="https://leung44.github.io//tag/Zcs33y6xL" class="post-tag">
-                  # Mysql
+                <a href="https://leung44.github.io//tag/FSdw0XLgQ" class="post-tag">
+                  # Liunx
                 </a>
               
             </div>
             
-              <img class="post-feature-image" src="https://leung44.github.io//post-images/mysql-bei-fen.gif" alt="">
+              <img class="post-feature-image" src="https://leung44.github.io//post-images/linux-ji-ben-ming-ling.gif" alt="">
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="全量备份">全量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak
-MYSQL_HOME=/usr/local/mysql
-USERNAME=&quot;root&quot;
-PASSWORD=&quot;xiaojiao123&quot;
-DB_NAME=&quot;aixin100&quot;
-# 定义备份文件名
-FILE_NAME=&quot;${DB_NAME}_${DATE_NOW}.sql&quot;
-# 定义备份文件目录
-BACKUP_FILE_NAME=&quot;${BACKUP_DIR}/${FILE_NAME}&quot;
-echo &quot;starting backup mysql ${DB_NAME} at ${NOW}.&quot;
-# 进入 Mysql bin 目录
-cd ${MYSQL_HOME}/bin
-mysqldump -u${USERNAME} -p${PASSWORD}  --lock-all-tables --flush-logs ${DB_NAME} &gt; ${BACKUP_FILE_NAME}
-# 进入到备份文件目录
-cd ${BACKUP_DIR}
-# 压缩备份文件
-tar zcvf ${FILE_NAME}.tar.gz ${FILE_NAME}
-# 删除所有增量备份
-cd $BACKUP_DIR/daily
-rm -f *
-# use nodejs to upload backup file other place
-#NODE_ENV=$backUpFolder@$backUpFileName node /home/tasks/upload.js
-DATE_END=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-echo &quot;finish backup mysql database ${DB_NAME} at ${DATE_END}.&quot;
+                <h2 id="查看网络连接信息">查看网络连接信息</h2>
+<pre><code class="language-shell">nestat -ntlp
 </code></pre>
-<h2 id="增量备份">增量备份</h2>
-<pre><code class="language-shell">#!/bin/bash
-# 获取当前时间
-DATE_NOW=$(date &quot;+%Y%m%d-%H%M%S&quot;)
-BACKUP_DIR=/home/db_bak/daily
-# 日志文件
-LOG_FILE=/home/db_bak/bak.log
-# mysql目录
-MYSQL_HOME=/usr/local/mysql
-# mysql的index文件路径，放在数据目录下的
-BIN_FILE=${MYSQL_HOME}/data/mysql-bin.index
-# 这个是用于产生新的mysql-bin.00000*文件
-cd ${MYSQL_HOME}/bin
-mysqladmin -uroot -pxiaojiao123 flush-logs
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-a</td>
+<td style="text-align:center">(all)显示所有选项，默认不显示 LISTEN 相关</td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">(tcp)仅显示 tcp 相关选项</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td style="text-align:center">(udp)仅显示 udp 相关选项</td>
+</tr>
+<tr>
+<td style="text-align:center">-n</td>
+<td style="text-align:center">拒绝显示别名，能显示数字的全部转化成数字。</td>
+</tr>
+<tr>
+<td style="text-align:center">-l</td>
+<td style="text-align:center">仅列出有在 Listen (监听) 的服務状态</td>
+</tr>
+<tr>
+<td style="text-align:center">-p</td>
+<td style="text-align:center">显示建立相关链接的程序名</td>
+</tr>
+<tr>
+<td style="text-align:center">-r</td>
+<td style="text-align:center">显示路由信息，路由表</td>
+</tr>
+<tr>
+<td style="text-align:center">-e</td>
+<td style="text-align:center">显示扩展信息，例如 uid 等</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">按各个协议进行统计</td>
+</tr>
+<tr>
+<td style="text-align:center">-c</td>
+<td style="text-align:center">每隔一个固定时间，执行该 netstat 命令。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件列表">文件列表</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ls</td>
+<td style="text-align:center">list</td>
+</tr>
+<tr>
+<td style="text-align:center">ll</td>
+<td style="text-align:center">列出详细资料</td>
+</tr>
+<tr>
+<td style="text-align:center">la</td>
+<td style="text-align:center">列出隐藏资料</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-shell"># 当前路径
+pwd #print work directory
 
-COUNTER=`wc -l $BIN_FILE| awk '{print $1}'`
-NEXT_NUM=0
-# 这个for循环用于比对$Counter,$NextNum这两个值来确定文件是不是存在或最新的
-for FILE in `cat $BIN_FILE`
-do
-    BASE=`basename $FILE`
-    echo $BASE
-    NEXT_NUM=`expr $NEXT_NUM + 1`
-    if [ '$NEXT_NUM' == '$COUNTER' ]
-    then
-        echo $BASE skip! &gt;&gt; $LOG_FILE
-    else
-        DEST=$BACKUP_DIR/$BASE
-        #test -e用于检测目标文件是否存在，存在就写exist!到$LogFile去
-        if(test -e $DEST)
-        then
-            echo $BASE exist! &gt;&gt; $LOG_FILE
-        else
-            cp $MYSQL_HOME/data/$BASE $BACKUP_DIR
-            echo $BASE copying &gt;&gt; $LOG_FILE
-        fi
-        fi
-done
+# 创建文件夹
+mkdir #make directory
 
-echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
+# 复制
+cp source dest #copy
+cp -r source dest#递归带目录复制
+cp -r source/. dest#复制目录下文件
+
+# 移动
+```shell
+mv #move(rename)
+mv source dest
+
+# 删除
+rm #remove
+rm -rf #递归,强行删除
+
+# 查看文件
+cat
+
+# 搜索
+cat info.log | grep 'keyword'
+
+#查看倒数几行
+tail
+tail -f info.log # 滚动显示
+
+# 终止进程
+kill pid
+kill -9 pid #强行终止
+
+# 清屏
+clear
+reset
+
+# 查找
+find / -name ''
+
+# 查看端口占用
+netstat -aon|findstr 8080
+tasklist|findstr ${pid}
+taskkill -t -f -pid ${pid}
+
+# 杀死端口进程
+kill -9 $(lsof -t -i:8081)
+
+# 授权 shell 脚本
+chmod +x *.sh
+
+# 最近登录
+last
+
+# 最近失败登录
+lastb
+</code></pre>
+<h2 id="开放端口">开放端口</h2>
+<pre><code class="language-shell"># 查看是否已开放
+firewall-cmd --query-port=9090/tcp
+
+# 若提示 FirewallD is not running, 开启防火墙
+systemctl start firewalld
+
+# 开启端口
+firewall-cmd --add-port=9090/tcp --permanent
+
+# 重新加载配置
+firewall-cmd --reload
+
+# 关闭防火墙
+systemctl stop firewalld
+
+# 移除端口
+firewall-cmd --permanent --remove-port=9090/tcp
+
+# 查看端口能否远程连接
+telnet ip port
 </code></pre>
 
               </div>
@@ -169,8 +255,9 @@ echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E5%85%A8%E9%87%8F%E5%A4%87%E4%BB%BD">全量备份</a></li>
-<li><a href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD">增量备份</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF">查看网络连接信息</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E5%88%97%E8%A1%A8">文件列表</a></li>
+<li><a href="#%E5%BC%80%E6%94%BE%E7%AB%AF%E5%8F%A3">开放端口</a></li>
 </ul>
 </li>
 </ul>
@@ -183,9 +270,9 @@ echo ${DATE_NOW} backup succsess!!! &gt;&gt; $LOG_FILE
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://leung44.github.io//post/mysql">
+            <a href="https://leung44.github.io//post/kai-fa-huan-jing-pei-zhi">
               <h3 class="post-title">
-                MYSQL安装
+                开发环境配置
               </h3>
             </a>
           </div>
