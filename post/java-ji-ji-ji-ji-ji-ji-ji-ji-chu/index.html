@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JAVA基基基基基基基基础 | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
-<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569548675562">
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569579073118">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://leung44.github.io/">
-  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569548675562" alt="">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569579073118" alt="">
   </a>
   <h1 class="site-title">
     泥瓶巷
@@ -80,8 +80,12 @@
                 2019-09-27
               </span>
               <span>
-                1 min read
+                5 min read
               </span>
+              
+                <a href="https://leung44.github.io//tag/A4xQZS0yb" class="post-tag">
+                  # Interview
+                </a>
               
                 <a href="https://leung44.github.io//tag/ka78DRSA_" class="post-tag">
                   # Java
@@ -93,8 +97,8 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="java特性">JAVA特性</h2>
-<p>封装, 继承, 多态, 低耦合, 跨平台</p>
+                <h1 id="java特性">JAVA特性</h1>
+<p>封装, 继承, 多态, 跨平台, 自动垃圾回收</p>
 <ul>
 <li>封装</li>
 <li>继承</li>
@@ -102,15 +106,235 @@
 <li>低耦合</li>
 <li>跨平台</li>
 </ul>
+<h2 id="封装">封装</h2>
+<p>将一个对象私有化同时提供可被外界访问的属性和方法</p>
+<h2 id="继承">继承</h2>
+<ul>
+<li>子类拥有父类非 private 的属性和方法</li>
+<li>子类可以拥有自己的方法</li>
+<li>子类可以重写父类的方法</li>
+</ul>
+<h2 id="多态">多态</h2>
+<p>引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定</p>
+<h2 id="跨平台">跨平台</h2>
+<p>&quot;一次编译, 到处运行&quot;<br>
+编码时生成字节码文件(.class), 可在JVM上运行转换为原始代码</p>
+<h1 id="基本类型">基本类型</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关键字</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">布尔型</td>
+</tr>
+<tr>
+<td style="text-align:center">byte</td>
+<td style="text-align:center">字节型</td>
+</tr>
+<tr>
+<td style="text-align:center">char</td>
+<td style="text-align:center">字符型</td>
+</tr>
+<tr>
+<td style="text-align:center">double</td>
+<td style="text-align:center">双精度浮点</td>
+</tr>
+<tr>
+<td style="text-align:center">float</td>
+<td style="text-align:center">单精度浮点</td>
+</tr>
+<tr>
+<td style="text-align:center">int</td>
+<td style="text-align:center">整形</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">长整型</td>
+</tr>
+<tr>
+<td style="text-align:center">short</td>
+<td style="text-align:center">短整型</td>
+</tr>
+</tbody>
+</table>
+<h1 id="string">String</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构造</th>
+<th style="text-align:center">实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">String s = &quot;&quot;</td>
+<td style="text-align:center">检查常量池</td>
+</tr>
+<tr>
+<td style="text-align:center">String s = new String(&quot;&quot;)}</td>
+<td style="text-align:center">新建堆对象</td>
+</tr>
+<tr>
+<td style="text-align:center">StringBuilder</td>
+<td style="text-align:center">线程不安全</td>
+</tr>
+<tr>
+<td style="text-align:center">StringBuffer</td>
+<td style="text-align:center">方法调用了synchronized同步锁, 线程安全</td>
+</tr>
+</tbody>
+</table>
+<h2 id="不可变">不可变</h2>
+<ol>
+<li>保证 String 对象的安全性</li>
+<li>保证 hash 属性值不会频繁变更, 确保了唯一性(HashMap实现key-value缓存)</li>
+<li>可以实现字符串常量池</li>
+</ol>
+<h2 id="拼接">&quot;+&quot;拼接</h2>
+<p>编译器会自动转化为 StringBuilder , 但循环中会新建多个 StringBuilder</p>
+<h2 id="stringintern">String.intern()</h2>
+<p>构造相同值得字符串对象返回相同的对象引用地址(数据过大会增加常量池负担)</p>
+<h1 id="静态方法不能调用非静态成员">静态方法不能调用非静态成员</h1>
+<p>非静态的实例成员变量属于对象, 而静态方法执行时并不一定存在对象</p>
+<h1 id="对象相等和指向他们的应用相等">对象相等和指向他们的应用相等</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">对象相等</th>
+<th style="text-align:center">引用相等</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">比较内存中存放的内容是否相等</td>
+<td style="text-align:center">比较指向的内存地址是否相等</td>
+</tr>
+</tbody>
+</table>
+<h1 id="和equals">==和equals</h1>
+<ul>
+<li>==
+<ul>
+<li>基本数据类型比较值</li>
+<li>引用数据类型比较内存地址</li>
+</ul>
+</li>
+<li>equals
+<ul>
+<li>比较的类没有重写equals方法, 则调用==比较</li>
+<li>类重写了equals, 比较两个对象的内容</li>
+<li>String 中的 equals 没有被重写, 比较的是值</li>
+</ul>
+</li>
+</ul>
+<h1 id="hashcode">hashCode</h1>
+<p>获取对象的哈希码(散列码), 返回int, 确定该对象在哈希表中的索引位置</p>
+<h2 id="hashset中的去重应用">HashSet中的去重应用</h2>
+<p>add 时会先计算对象的 hashCode 来判断对象加入的位置,同时也会与其他已经加入的对象的 hashCode 作比较, 没有相符则假设对象没有重复出现. 如有相同则调用 euals 方法检查 hashcode 相等的对象是否真的相同, 减少 equals 次数, 提高执行速度</p>
+<h2 id="hashcode与equals的相关规定">hashCode与equals的相关规定</h2>
+<ul>
+<li>两个对象相等, hashCode一定相同</li>
+<li>两个对象相等, 对两个对象分别调用 equals 方法都返回 true</li>
+<li>两个对象有相同的 hashCode 不一定相等</li>
+<li>equals 方法被重写则 hashCode 方法也必须重写</li>
+<li>hashCode 的默认行为是对堆上的对象产生独特值, 如果没有重写 hashCode, 则该 class 的两个对象无论如何都不会相等</li>
+</ul>
+<h1 id="值传递">值传递</h1>
+<p>JAVA只有值传递(创建副本)</p>
+<ul>
+<li>一个方法不能修改一个基本数据类型的参数</li>
+<li>一个方法可以改变一个对象参数的状态</li>
+<li>一个方法不能让对象引用一个新的对象</li>
+</ul>
+<h1 id="final">final</h1>
+<p>final 关键字主要用在:变量, 方法, 类</p>
+<ul>
+<li>对一个 final 变量, 如果是基本数据类型的变量, 则其数值一旦在初始化之后就不能修改; 如果是引用类型的变量, 则在对其初始化之后便不能再让其指向另一个对象</li>
+<li>当用 final 修饰一个类时, 表明这个类不能被继承; final 类中的所有成员方法都会被隐式地指定为 final 方法</li>
+<li>锁定方法, 以防任何继承类修改它的含义</li>
+</ul>
+<h1 id="integer-缓存">Integer 缓存</h1>
+<p>new Integer() 数值为 -128~127 时会缓存 Integer 对象</p>
+<h1 id="pojo类属性">POJO类属性</h1>
+<p>必须使用包装类型</p>
+<ul>
+<li>基本类型有默认值, 0 和 null 还是有区别的</li>
+<li>数据库的查询结果有可能是 null, 因为自动拆箱, 用基本数据类型接收有NPE风险</li>
+</ul>
+<h1 id="getpost">GET&amp;POST</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">GET</th>
+<th style="text-align:center">POST</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">请求可被缓存</td>
+<td style="text-align:center">请求不可被缓存</td>
+</tr>
+<tr>
+<td style="text-align:center">请求保留在浏览器历史记录中</td>
+<td style="text-align:center">请求不会保留在浏览器历史记录中</td>
+</tr>
+<tr>
+<td style="text-align:center">请求可被收藏为书签</td>
+<td style="text-align:center">不能被收藏为书签</td>
+</tr>
+<tr>
+<td style="text-align:center">请求不应在处理敏感数据时使用</td>
+<td style="text-align:center">请求对数据长度没有要求</td>
+</tr>
+<tr>
+<td style="text-align:center">请求有长度限制(2048 字符) IE 和 Safari 限制2K Opera限制4K Firefox Chrome 限制8K</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">GET请求只应当取回数据</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li>
+<li><a href="#java%E7%89%B9%E6%80%A7">JAVA特性</a>
 <ul>
-<li><a href="#java%E7%89%B9%E6%80%A7">JAVA特性</a></li>
+<li><a href="#%E5%B0%81%E8%A3%85">封装</a></li>
+<li><a href="#%E7%BB%A7%E6%89%BF">继承</a></li>
+<li><a href="#%E5%A4%9A%E6%80%81">多态</a></li>
+<li><a href="#%E8%B7%A8%E5%B9%B3%E5%8F%B0">跨平台</a></li>
 </ul>
 </li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B">基本类型</a></li>
+<li><a href="#string">String</a>
+<ul>
+<li><a href="#%E4%B8%8D%E5%8F%AF%E5%8F%98">不可变</a></li>
+<li><a href="#%E6%8B%BC%E6%8E%A5">&quot;+&quot;拼接</a></li>
+<li><a href="#stringintern">String.intern()</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E4%B8%8D%E8%83%BD%E8%B0%83%E7%94%A8%E9%9D%9E%E9%9D%99%E6%80%81%E6%88%90%E5%91%98">静态方法不能调用非静态成员</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9B%B8%E7%AD%89%E5%92%8C%E6%8C%87%E5%90%91%E4%BB%96%E4%BB%AC%E7%9A%84%E5%BA%94%E7%94%A8%E7%9B%B8%E7%AD%89">对象相等和指向他们的应用相等</a></li>
+<li><a href="#%E5%92%8Cequals">==和equals</a></li>
+<li><a href="#hashcode">hashCode</a>
+<ul>
+<li><a href="#hashset%E4%B8%AD%E7%9A%84%E5%8E%BB%E9%87%8D%E5%BA%94%E7%94%A8">HashSet中的去重应用</a></li>
+<li><a href="#hashcode%E4%B8%8Eequals%E7%9A%84%E7%9B%B8%E5%85%B3%E8%A7%84%E5%AE%9A">hashCode与equals的相关规定</a></li>
+</ul>
+</li>
+<li><a href="#%E5%80%BC%E4%BC%A0%E9%80%92">值传递</a></li>
+<li><a href="#final">final</a></li>
+<li><a href="#integer-%E7%BC%93%E5%AD%98">Integer 缓存</a></li>
+<li><a href="#pojo%E7%B1%BB%E5%B1%9E%E6%80%A7">POJO类属性</a></li>
+<li><a href="#getpost">GET&amp;POST</a></li>
 </ul>
 
               </div>
