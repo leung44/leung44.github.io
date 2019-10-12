@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>开发环境配置 | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
-<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569579073118">
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1570873079811">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://leung44.github.io/">
-  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569579073118" alt="">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1570873079811" alt="">
   </a>
   <h1 class="site-title">
     泥瓶巷
@@ -80,7 +80,7 @@
                 2019-09-26
               </span>
               <span>
-                4 min read
+                5 min read
               </span>
               
                 <a href="https://leung44.github.io//tag/FSdw0XLgQ" class="post-tag">
@@ -152,6 +152,7 @@ rm -rf
 </code></pre>
 <h2 id="nginx">NGINX</h2>
 <pre><code class="language-shell"># 下载nginx压缩包
+[官网](https://nginx.org/en/download.html)
 wget http://nginx.org/download/nginx-1.15.4.tar.gz 
 
 # 解压
@@ -160,6 +161,11 @@ cd nginx-1.15.4/
 
 # 编译安装
 make &amp;&amp; make install 
+
+# 全局配置
+vim etc/profile
+export NGINX_HOME=/usr/local/nginx/sbin
+export PATH=$PATH:$NGINX_HOME:
 
 # 启动 
 nginx 
@@ -172,6 +178,10 @@ nginx -s reload
 
 # 停止服务
 nginx -s quit
+
+# 查看模块
+nginx -V
+2&gt;&amp;1 nginx -V | tr ' '  '\n'|grep ssl
 
 # 杀进程
 ps -ef | grep nginx
@@ -198,6 +208,22 @@ pkill -9 nginx
             proxy_pass  http://127.0.0.1:8081;
         }
     }
+</code></pre>
+<h3 id="卸载ngxin">卸载ngxin</h3>
+<pre><code class="language-shell"># Stop the service
+sudo systemctl stop nginx.service
+sudo systemctl disable nginx.service
+
+# Remove files
+sudo userdel -r nginx
+chkconfig nginx off
+sudo rm -rf /etc/nginx
+sudo rm -rf /var/log/nginx
+sudo rm -rf /var/cache/nginx/
+sudo rm -rf /usr/lib/systemd/system/nginx.service
+
+# Remove nginx
+yum remove nginx
 </code></pre>
 <h2 id="redis">REDIS</h2>
 <pre><code class="language-shell"># 切换到安装目录准备下载安装包
@@ -309,7 +335,11 @@ rabbitmqctl change_password ${username} '${new_password}'
 <li><a href="#maven">MAVEN</a></li>
 <li><a href="#nodejs">NODEJS</a></li>
 <li><a href="#%E6%8E%88%E6%9D%83%E8%84%9A%E6%9C%AC">授权脚本</a></li>
-<li><a href="#nginx">NGINX</a></li>
+<li><a href="#nginx">NGINX</a>
+<ul>
+<li><a href="#%E5%8D%B8%E8%BD%BDngxin">卸载ngxin</a></li>
+</ul>
+</li>
 <li><a href="#redis">REDIS</a></li>
 <li><a href="#rabbitmq">RabbitMQ</a></li>
 </ul>

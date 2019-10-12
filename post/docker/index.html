@@ -2,9 +2,9 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>YDL_KEY | 泥瓶巷</title>
+<title>DOCKER | 泥瓶巷</title>
 <meta name="description" content="Hello world" />
-<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1569579073118">
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1570873079811">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://leung44.github.io/">
-  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1569579073118" alt="">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1570873079811" alt="">
   </a>
   <h1 class="site-title">
     泥瓶巷
@@ -73,113 +73,57 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              YDL_KEY
+              DOCKER
             </h2>
             <div class="post-info">
               <span>
-                2019-09-26
+                2019-10-08
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
-              
-                <a href="https://leung44.github.io//tag/kKsUtZFYb" class="post-tag">
-                  # Windows
-                </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <pre><code class="language-yaml"># 【乐爱心】
+                <h1 id="命令">命令</h1>
+<pre><code class="language-shell"># 所有镜像
+docker images
 
-user: 1610660369@qq.com
-password: lehui2019**
+# 所有容器
+docker ps -a
 
-APPID: wx760cef3a19962d7a
-secret: 72a19c31e89949195d9af5c84607e241
-Token: love100
-AESKey: 8tdkp3qRKx4lF8U3FT9rD0vd8TJLYCkAy5ohyVnfbjN
+# 停止所有容器
+docker container stop $(docker container ls -aq)
 
-
-# 【支付: 广州乐惠网络科技有限公司】
-mchId: 1538027571
-mchKey: WUxDkx2XnLKL2SK5gbp0lr6ud4ffqncr
-操作密码: apilax20**
+# 删除所有停止的容器
+docker container prune
+docker container rm $(docker container ls -aq)
 
 
-# 【萌爱心】
-user: 1926646409@qq.com
-password: gzqy2018
-
-appid: wx00a906b780828297
-sercet: c8fc3c64b2657198bbb8e1e8703d72b0
-Token: love100
-AESKey: 8tdkp3qRKx4lF8U3FT9rD0vd8TJLYCkAy5ohyVnfbjN
-
-# 【支付 武汉蕲远信息科技有限公司】
-mckId: 1540638001
-mchKey: d9fa57bbddf6fc46da50b0b52bb247b0
-操作密码: 201989
-
-# 【爱心壹佰】
-username: 3150509305@qq.com
-password: aixin100()
-
-appid: wx47671daaef00f89c
-sercet: bd9f60f21313ac87fd9bf70a5d37f91d
-Token: love100
-AESKey: p4p3ZSZ8bGVZkLVrZNrcNpxVoYruBxmpQqbuYw7Pnwp
-
-# 【支付: 华侨基金会】
-mchId: 1500474782
-mchKey: qiaoxingongyipingtai201803272100
-
-
-# 模板消息
-审核结果通知: OPENTM400617306
-缴费提醒: OPENTM409571580
-公益项目进展通知: OPENTM204562346
-
-# 【阿里云服务器】
-IP: 59.110.142.174
-user: root
-password: Yidailu()17**
-
-# 数据库
-user: root
-password: xiaojiao123
-# redis
-password: bG92ZTEwMF9yZWRpcw==
-
-# 本地 Liunx
-IP: 192.168.18.253
-user: root
-password: M6RScMZ6sLEw
-
-# 本地数据库
-user: xiaojiao
-password: xiaojiao123
-# druid 加密
-privateKey: MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAhL3dz/p+3zjvQrEg1Qpj/eZ/7Ea218jBs/SXzqfX0rzInmigzG2CiHRjgwxm5ma35Yg41KYJppHUsyvBEwPcuwIDAQABAkAycI9Dw1TIb7MC7ZmjOmKKjTbYynoZ/tAUGIJC5aZuDfiiZo+G3q/UGOxs0TO3bkNVNYTZ2yFGhegkqBs33XE5AiEA/9Gw4BX9NNifMw7jpsLIqgas862Nx7ckSzDo9Nh//IcCIQCE1eVNv44D85HJ+eoj+y0xmTt9PwbKaiMStWveALb/LQIhAMoLoqgJlfeUE4CvBMwj0XrAVP8MlwsisY6VbZhcGhGnAiAqq/++iyOW917FEGh76ItrHHt0z5Nh4NilgOxG49nlfQIgOHHVw1V2PbywPxKIOwt5iUNhmT97gpWWnzmbuxSFmzA=
-publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAIS93c/6ft8470KxINUKY/3mf+xGttfIwbP0l86n19K8yJ5ooMxtgoh0Y4MMZuZmt+WIONSmCaaR1LMrwRMD3LsCAwEAAQ==
-password: NaFvaH6jhinlADR4S2E38bE5iKcJWI4pcQ8birhdxwEhoXDghFg/GzUgWv0ND6uR+aIvm+fsz65C6dgCC2/iPg==
-
-# 四合一认证
-link: https://market.aliyun.com/products/57000002/cmapi028251.html
-AppKey: 203723498     
-AppSecret: 8udyoeh0j7llkyoesk0e7xyic1n4rmh9
-AppCode: 8467d60fe63d4c4e952755ef5fe79453
 </code></pre>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%91%BD%E4%BB%A4">命令</a></li>
+</ul>
+
               </div>
             </div>
           </article>
         </div>
 
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://leung44.github.io//post/shell">
+              <h3 class="post-title">
+                SHELL
+              </h3>
+            </a>
+          </div>
         
 
         

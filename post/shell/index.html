@@ -1,0 +1,320 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SHELL | 泥瓶巷</title>
+<meta name="description" content="Hello world" />
+<link rel="shortcut icon" href="https://leung44.github.io//favicon.ico?v=1570873079811">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://leung44.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://leung44.github.io/">
+  <img class="avatar" src="https://leung44.github.io//images/avatar.png?v=1570873079811" alt="">
+  </a>
+  <h1 class="site-title">
+    泥瓶巷
+  </h1>
+  <p class="site-description">
+    Hello world
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              SHELL
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-09-29
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://leung44.github.io//tag/FSdw0XLgQ" class="post-tag">
+                  # Liunx
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://leung44.github.io//post-images/shell.gif" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="helloworld">HELLOWORLD</h1>
+<pre><code class="language-sh">#!/bin/sh
+echo &quot;Hello World&quot;
+</code></pre>
+<p>&quot;#!&quot;约定标记, 通知系统需要什么解析器来执行<br>
+&quot;echo&quot; 输出命令</p>
+<h1 id="变量">变量</h1>
+<h2 id="创建变量">创建变量</h2>
+<pre><code class="language-sh">AUTHOR_NAME=&quot;TonyLeung&quot;
+</code></pre>
+<ul>
+<li>不用$符号</li>
+<li>不能有空格</li>
+<li>不能数字开头</li>
+</ul>
+<h2 id="使用变量">使用变量</h2>
+<pre><code class="language-sh">$AUTHOR_NAME
+${AUTHOR_NAME}
+</code></pre>
+<p>加美元符, 花括号可加可不加</p>
+<h2 id="重新赋值">重新赋值</h2>
+<pre><code class="language-sh">AUTHOR_NAME=&quot;Tony&quot;
+echo ${AUTHOR_NAME}
+AUTHOR_NAME=&quot;Leung&quot;
+echo ${AUTHOR_NAME}
+</code></pre>
+<h2 id="只读变量">只读变量</h2>
+<pre><code class="language-sh">AUTHOR_NAME=&quot;TonyLeung&quot;
+readonly AUTHOR_NAME
+</code></pre>
+<h2 id="删除变量">删除变量</h2>
+<pre><code class="language-sh">unset AUTHOR_NAME
+</code></pre>
+<p>不能删除只读变量</p>
+<h1 id="字符串">字符串</h1>
+<h2 id="单引号和双引号">单引号和双引号</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">单引号</th>
+<th style="text-align:center">双引号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字符原样输出, 变量无效</td>
+<td style="text-align:center">可以有变量</td>
+</tr>
+<tr>
+<td style="text-align:center">不能出现转义字符</td>
+<td style="text-align:center">可以有转义字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="获取字符串长度">获取字符串长度</h2>
+<pre><code class="language-sh">echo ${#AUTHOR_NAME} #9
+</code></pre>
+<h2 id="截取字符串">截取字符串</h2>
+<pre><code class="language-sh">echo ${AUTHOR_NAME:4:5 #Leung
+</code></pre>
+<h1 id="多行注释">多行注释</h1>
+<pre><code class="language-sh">:&lt;&lt;'
+注释内容...
+注释内容...
+注释内容...
+'
+</code></pre>
+<h1 id="参数传递">参数传递</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">参数处理</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$#</td>
+<td style="text-align:center">传递到脚本的参数个数</td>
+</tr>
+<tr>
+<td style="text-align:center">$*</td>
+<td style="text-align:center">以一个单字符串显示所有向脚本传递的参数。 如&quot;$*&quot;用「&quot;」括起来的情况、以&quot;$1 $2 … $n&quot;的形式输出所有参数。</td>
+</tr>
+<tr>
+<td style="text-align:center">$$</td>
+<td style="text-align:center">脚本运行的当前进程ID号</td>
+</tr>
+<tr>
+<td style="text-align:center">$!</td>
+<td style="text-align:center">后台运行的最后一个进程的ID号</td>
+</tr>
+<tr>
+<td style="text-align:center">$@</td>
+<td style="text-align:center">与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>∗</mo><mi mathvariant="normal">相</mi><mi mathvariant="normal">同</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">但</mi><mi mathvariant="normal">是</mi><mi mathvariant="normal">使</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">加</mi><mi mathvariant="normal">引</mi><mi mathvariant="normal">号</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">并</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">引</mi><mi mathvariant="normal">号</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">返</mi><mi mathvariant="normal">回</mi><mi mathvariant="normal">每</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">参</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">。</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">*相同，但是使用时加引号，并在引号中返回每个参数。如&quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">∗</span><span class="mord cjk_fallback">相</span><span class="mord cjk_fallback">同</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">但</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">引</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">并</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">引</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">返</span><span class="mord cjk_fallback">回</span><span class="mord cjk_fallback">每</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord">&quot;</span></span></span></span>@&quot;用「&quot;」括起来的情况、以&quot;$1&quot; &quot;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi mathvariant="normal">&quot;</mi><mo>…</mo><mi mathvariant="normal">&quot;</mi></mrow><annotation encoding="application/x-tex">2&quot; … &quot;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">&quot;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">&quot;</span></span></span></span>n&quot; 的形式输出所有参数。</td>
+</tr>
+<tr>
+<td style="text-align:center">$-</td>
+<td style="text-align:center">显示 Shell 使用的当前选项</td>
+</tr>
+<tr>
+<td style="text-align:center">$?</td>
+<td style="text-align:center">显示最后命令的退出状态, 0 表示没有错误</td>
+</tr>
+</tbody>
+</table>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#helloworld">HELLOWORLD</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%8F%98%E9%87%8F">创建变量</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F">使用变量</a></li>
+<li><a href="#%E9%87%8D%E6%96%B0%E8%B5%8B%E5%80%BC">重新赋值</a></li>
+<li><a href="#%E5%8F%AA%E8%AF%BB%E5%8F%98%E9%87%8F">只读变量</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%8F%98%E9%87%8F">删除变量</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>
+<ul>
+<li><a href="#%E5%8D%95%E5%BC%95%E5%8F%B7%E5%92%8C%E5%8F%8C%E5%BC%95%E5%8F%B7">单引号和双引号</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6">获取字符串长度</a></li>
+<li><a href="#%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2">截取字符串</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A">多行注释</a></li>
+<li><a href="#%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92">参数传递</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://leung44.github.io//post/java-ji-ji-ji-ji-ji-ji-ji-ji-chu">
+              <h3 class="post-title">
+                JAVA基基基基基基基基础
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '19cfff94559c2c61035b',
+    clientSecret: '50f29ce42c107027e1184adfa7833261872c9a74',
+    repo: 'leung44.github.io',
+    owner: 'leung44',
+    admin: ['leung44'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  大梦一场三千载 | 
+  <a class="rss" href="https://leung44.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
